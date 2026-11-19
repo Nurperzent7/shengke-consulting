@@ -42,3 +42,11 @@ next-env.d.ts
 
 # form submissions
 /data/*.jsonl
+
+# cursor / local env
+/agent-tools/
+/canvases/
+/mcps/
+/terminals/
+/uploads/
+/website/
