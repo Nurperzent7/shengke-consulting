@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import { appendFile, mkdir } from "fs/promises";
-import path from "path";
+import { storeLead } from "@/lib/leads";
 
 export async function POST(request: Request) {
   try {
@@ -14,10 +13,18 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: false, error: "missing_fields" }, { status: 400 });
     }
 
-    const dir = path.join(process.cwd(), "data");
-    await mkdir(dir, { recursive: true });
-    const line = JSON.stringify({ ...body, createdAt: new Date().toISOString() }) + "\n";
-    await appendFile(path.join(dir, "consultations.jsonl"), line, "utf8");
+    storeLead({
+      type: "consultation",
+      name,
+      phone,
+      topic,
+      date,
+      time: String(body.time || "").trim() || undefined,
+      format: String(body.format || "").trim() || undefined,
+      company: String(body.company || "").trim() || undefined,
+      email: String(body.email || "").trim() || undefined,
+      locale: String(body.locale || "").trim() || undefined,
+    });
 
     return NextResponse.json({ ok: true });
   } catch {

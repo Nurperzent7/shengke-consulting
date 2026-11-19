@@ -34,4 +34,4 @@ npm run dev
 
 ## Заявки
 
-Формы сохраняют заявки в `data/leads.jsonl` и `data/consultations.jsonl`.
+Формы принимают заявки через `/api/contact` и `/api/consultation` и сохраняют их в памяти процесса (с логом в runtime). Для продакшена можно подключить почту/CRM через переменные окружения.
