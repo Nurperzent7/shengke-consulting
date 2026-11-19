@@ -16,7 +16,15 @@ const body = Manrope({
 export const metadata: Metadata = {
   title: "Shengke Consulting",
   description: "Legal, accounting and tax support in Kazakhstan",
-  metadataBase: new URL("https://shengke.kz"),
+  metadataBase: new URL("https://shengkeconsulting.kz"),
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
