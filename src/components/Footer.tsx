@@ -19,7 +19,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Messages }) {
     <footer className="bg-navy text-white">
       <div className="container-page section-pad grid gap-10 md:grid-cols-3">
         <div>
-          <Image src="/logo-white.svg" alt="Shengke Consulting" width={190} height={44} />
+          <Image src="/logo-white.svg" alt="Shengke Consulting" width={200} height={40} />
           <p className="mt-4 max-w-sm text-sm text-white/75">{dict.footer.tagline}</p>
           <div className="gold-line mt-5" />
           <ul className="mt-5 space-y-1 text-sm text-white/70">

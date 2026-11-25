@@ -24,7 +24,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Messages }) {
     <header className="sticky top-0 z-50 border-b border-line/80 bg-white/90 backdrop-blur-md">
       <div className="container-page flex h-[72px] items-center justify-between gap-4">
         <Link href={localizedPath(locale, "/")} className="shrink-0">
-          <Image src="/logo.svg" alt="Shengke Consulting" width={180} height={42} priority />
+          <Image src="/logo.svg" alt="Shengke Consulting" width={200} height={40} priority />
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">
