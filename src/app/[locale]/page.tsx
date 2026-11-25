@@ -47,9 +47,10 @@ export default async function HomePage({
   return (
     <>
       <section className="surface-dark noise relative overflow-x-clip pb-24 text-white sm:pb-0">
-        <div className="absolute inset-0 hero-grid opacity-45" />
-        <div className="absolute -top-20 -right-16 h-64 w-64 rounded-full bg-gold/15 blur-3xl md:h-80 md:w-80" />
-        <div className="absolute bottom-0 left-0 h-32 w-full bg-gradient-to-t from-navy-deep/80 to-transparent" />
+        <div className="absolute inset-0 hero-grid opacity-35" />
+        {/* Glow stays on the LEFT so it never washes the stats panel */}
+        <div className="pointer-events-none absolute -top-24 left-[-6rem] h-72 w-72 rounded-full bg-gold/12 blur-3xl md:h-96 md:w-96" />
+        <div className="pointer-events-none absolute bottom-0 left-0 h-32 w-full bg-gradient-to-t from-navy-deep/80 to-transparent" />
         <div className="container-page relative grid items-start gap-8 py-12 sm:gap-10 sm:py-16 md:grid-cols-[1.15fr_0.85fr] md:items-center md:gap-10 md:py-20 lg:gap-12 lg:py-24">
           <div className="fade-up relative z-10 min-w-0">
             <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[10px] tracking-[0.1em] text-champagne uppercase sm:px-3.5 sm:text-[11px] sm:tracking-[0.14em]">
@@ -79,20 +80,20 @@ export default async function HomePage({
             </div>
           </div>
 
-          <div className="fade-up-delay relative z-10 min-w-0">
-            <div className="rounded-[1.25rem] border border-gold/25 p-1.5 sm:rounded-[1.6rem] sm:p-2">
-              <div className="rounded-[1.1rem] border border-white/10 bg-white/[0.05] p-2.5 backdrop-blur-md sm:rounded-[1.35rem] sm:p-3">
+          <div className="fade-up-delay relative z-20 min-w-0">
+            <div className="rounded-[1.25rem] border border-gold/35 bg-[#07111F]/92 p-1.5 shadow-[0_24px_60px_rgba(0,0,0,0.35)] sm:rounded-[1.6rem] sm:p-2">
+              <div className="rounded-[1.1rem] border border-white/12 bg-[#0A1C38] p-2.5 sm:rounded-[1.35rem] sm:p-3">
                 <div className="grid grid-cols-2 gap-2 md:grid-cols-1 md:gap-2.5">
                   {stats.map((item, idx) => (
                     <div
                       key={item.label}
-                      className="flex flex-col gap-2 rounded-2xl border border-white/5 bg-white/[0.03] px-3.5 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-5 sm:py-4"
+                      className="flex flex-col gap-2 rounded-2xl border border-white/10 bg-[#0D2448] px-3.5 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-5 sm:py-4"
                     >
                       <div className="min-w-0">
-                        <div className="text-[10px] font-semibold tracking-[0.14em] text-white/40 uppercase">
+                        <div className="text-[10px] font-semibold tracking-[0.14em] text-white/45 uppercase">
                           0{idx + 1}
                         </div>
-                        <div className="mt-1 text-[12px] leading-snug text-white/70 sm:text-sm">
+                        <div className="mt-1 text-[12px] leading-snug text-white/80 sm:text-sm">
                           {item.label}
                         </div>
                       </div>
