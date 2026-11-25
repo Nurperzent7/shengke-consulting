@@ -97,7 +97,7 @@ export default async function HomePage({
                           {item.label}
                         </div>
                       </div>
-                      <div className="stat-value shrink-0">{item.value}</div>
+                      <div className="stat-value relative z-10 shrink-0">{item.value}</div>
                     </div>
                   ))}
                 </div>
