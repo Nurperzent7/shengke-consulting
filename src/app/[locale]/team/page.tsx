@@ -40,7 +40,7 @@ export default async function TeamPage({
                   0{idx + 1}
                 </div>
               </div>
-              <div className="p-6 md:p-7">
+              <div className="p-5 sm:p-6 md:p-7">
                 <div
                   className="-mt-14 mb-4 grid h-[4.25rem] w-[4.25rem] place-items-center rounded-2xl border border-line bg-cream text-xl font-semibold text-navy shadow-[0_12px_30px_rgba(8,22,45,0.12)]"
                   aria-label={member.photoAlt}

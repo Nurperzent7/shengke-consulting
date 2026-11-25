@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Onest, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 
-const display = Cormorant_Garamond({
+/** Source Serif 4 + Onest include cyrillic-ext (Ә Ғ Қ Ң Ө Ұ Ү Һ І). */
+const display = Source_Serif_4({
   variable: "--font-display",
-  subsets: ["latin", "cyrillic"],
+  subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
   weight: ["500", "600", "700"],
   style: ["normal", "italic"],
+  display: "swap",
 });
 
-const body = Manrope({
+const body = Onest({
   variable: "--font-body",
-  subsets: ["latin", "cyrillic"],
+  subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {

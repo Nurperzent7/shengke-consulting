@@ -113,7 +113,7 @@ export function ConsultationForm({
         <button
           type="submit"
           disabled={status === "loading" || !consent}
-          className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60"
+          className="btn-primary w-full !w-full disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === "loading" ? dict.common.sending : dict.common.bookConsultation}
         </button>

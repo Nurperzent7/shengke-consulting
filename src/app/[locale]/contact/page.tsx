@@ -34,7 +34,7 @@ export default async function ContactPage({
       <section className="section-pad">
         <div className="container-page grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="space-y-4">
-            <div className="surface-card rounded-[1.5rem] p-6 md:p-7">
+            <div className="surface-card rounded-[1.35rem] p-5 sm:rounded-[1.5rem] sm:p-6 md:p-7">
               <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-navy">
                 <MapPin size={18} className="text-gold-deep" />
                 {dict.contact.office}

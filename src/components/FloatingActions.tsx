@@ -11,11 +11,11 @@ export function FloatingActions({ dict }: { dict: Messages }) {
 
   return (
     <>
-      <div className="fixed right-4 bottom-4 z-50 flex flex-col gap-3">
+      <div className="floating-actions fixed right-3 bottom-3 z-50 flex flex-col gap-2.5 sm:right-4 sm:bottom-4 sm:gap-3">
         <button
           type="button"
           onClick={() => setWechatOpen(true)}
-          className="rounded-full border border-line bg-cream/95 px-4 py-3 text-sm font-semibold text-navy shadow-[0_12px_30px_rgba(8,22,45,0.14)] backdrop-blur transition hover:-translate-y-0.5"
+          className="min-h-11 rounded-full border border-line bg-cream/95 px-3.5 py-2.5 text-sm font-semibold text-navy shadow-[0_12px_30px_rgba(8,22,45,0.14)] backdrop-blur transition hover:-translate-y-0.5 sm:px-4 sm:py-3"
         >
           {dict.common.wechat}
         </button>
@@ -23,7 +23,7 @@ export function FloatingActions({ dict }: { dict: Messages }) {
           href={contacts.whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(37,211,102,0.35)] transition hover:-translate-y-0.5"
+          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#25D366] px-3.5 py-2.5 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(37,211,102,0.35)] transition hover:-translate-y-0.5 sm:px-4 sm:py-3"
         >
           <MessageCircle size={18} />
           WhatsApp
@@ -31,12 +31,12 @@ export function FloatingActions({ dict }: { dict: Messages }) {
       </div>
 
       {wechatOpen && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-navy-deep/55 p-4 backdrop-blur-sm">
-          <div className="relative w-full max-w-sm rounded-[1.5rem] surface-card p-6 shadow-2xl">
+        <div className="fixed inset-0 z-[60] flex items-end justify-center bg-navy-deep/55 p-3 backdrop-blur-sm sm:items-center sm:p-4">
+          <div className="relative mb-[env(safe-area-inset-bottom,0px)] w-full max-w-sm rounded-t-[1.5rem] surface-card p-5 shadow-2xl sm:mb-0 sm:rounded-[1.5rem] sm:p-6">
             <button
               type="button"
               onClick={() => setWechatOpen(false)}
-              className="absolute top-3 right-3 rounded-full p-1 text-muted hover:bg-soft"
+              className="absolute top-3 right-3 inline-flex min-h-10 min-w-10 items-center justify-center rounded-full text-muted hover:bg-soft"
               aria-label={dict.common.close}
             >
               <X size={18} />

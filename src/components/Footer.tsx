@@ -18,10 +18,16 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Messages }) {
   return (
     <footer className="surface-dark noise relative overflow-hidden text-white">
       <div className="absolute inset-0 hero-grid opacity-30" />
-      <div className="container-page relative section-pad grid gap-12 lg:grid-cols-[1.2fr_0.8fr_0.9fr]">
+      <div className="container-page relative section-pad grid gap-10 sm:gap-12 lg:grid-cols-[1.2fr_0.8fr_0.9fr]">
         <div>
-          <Image src="/logo-white.svg" alt="Shengke Consulting" width={210} height={42} />
-          <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/70">{dict.footer.tagline}</p>
+          <Image
+            src="/logo-white.svg"
+            alt="Shengke Consulting"
+            width={210}
+            height={42}
+            className="h-9 w-auto sm:h-10"
+          />
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/70 sm:mt-5">{dict.footer.tagline}</p>
           <div className="mt-6 h-px w-20 bg-gradient-to-r from-gold to-transparent" />
           <ul className="mt-6 space-y-1.5 text-sm text-white/65">
             <li className="font-medium text-white/90">{dict.legalEntity.name}</li>

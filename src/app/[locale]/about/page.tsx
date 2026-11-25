@@ -30,15 +30,15 @@ export default async function AboutPage({
 
       <section className="section-pad">
         <div className="container-page grid gap-8 lg:grid-cols-[1.35fr_0.85fr]">
-          <div className="surface-card rounded-[1.75rem] p-8 md:p-10">
-            <p className="text-base leading-relaxed text-muted md:text-lg">{dict.aboutPage.intro}</p>
+          <div className="surface-card rounded-[1.35rem] p-5 sm:rounded-[1.75rem] sm:p-8 md:p-10">
+            <p className="text-[0.95rem] leading-relaxed text-muted sm:text-base md:text-lg">{dict.aboutPage.intro}</p>
           </div>
-          <div className="relative overflow-hidden rounded-[1.75rem] surface-dark p-8 text-white md:p-10">
+          <div className="relative overflow-hidden rounded-[1.35rem] surface-dark p-5 text-white sm:rounded-[1.75rem] sm:p-8 md:p-10">
             <div className="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-gold/15 blur-2xl" />
             <div className="eyebrow text-champagne">Mission</div>
-            <h2 className="display mt-4 text-3xl font-semibold">{dict.aboutPreview.missionTitle}</h2>
-            <div className="gold-line mt-5" />
-            <p className="mt-5 text-white/75">{dict.aboutPreview.mission}</p>
+            <h2 className="display mt-3 text-[1.7rem] font-semibold sm:mt-4 sm:text-3xl">{dict.aboutPreview.missionTitle}</h2>
+            <div className="gold-line mt-4 sm:mt-5" />
+            <p className="mt-4 text-[0.95rem] text-white/75 sm:mt-5">{dict.aboutPreview.mission}</p>
           </div>
         </div>
       </section>
