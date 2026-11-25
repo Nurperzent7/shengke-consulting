@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/lib/constants";
 import { getLocale, isLocale, t } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/seo";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingActions } from "@/components/FloatingActions";
@@ -18,18 +19,7 @@ export async function generateMetadata({
   const { locale: raw } = await params;
   const locale = getLocale(raw);
   const dict = t(locale);
-  return {
-    title: dict.meta.title,
-    description: dict.meta.description,
-    alternates: {
-      languages: {
-        ru: "/ru",
-        en: "/en",
-        zh: "/zh",
-        kk: "/kk",
-      },
-    },
-  };
+  return pageMetadata(locale, "/", dict.meta);
 }
 
 export default async function LocaleLayout({

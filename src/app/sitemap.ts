@@ -1,8 +1,16 @@
 import type { MetadataRoute } from "next";
-import { locales, serviceSlugs } from "@/lib/constants";
+import { locales, serviceSlugs, siteUrl } from "@/lib/constants";
 
-const base = "https://shengke.kz";
-const pages = ["", "/about", "/services", "/cases", "/team", "/contact", "/consultation"];
+const pages = [
+  "",
+  "/about",
+  "/services",
+  "/cases",
+  "/team",
+  "/contact",
+  "/consultation",
+  "/privacy",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
@@ -10,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of locales) {
     for (const page of pages) {
       entries.push({
-        url: `${base}/${locale}${page}`,
+        url: `${siteUrl}/${locale}${page}`,
         lastModified: new Date(),
         changeFrequency: "weekly",
         priority: page === "" ? 1 : 0.8,
@@ -18,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
     for (const slug of serviceSlugs) {
       entries.push({
-        url: `${base}/${locale}/services/${slug}`,
+        url: `${siteUrl}/${locale}/services/${slug}`,
         lastModified: new Date(),
         changeFrequency: "monthly",
         priority: 0.7,

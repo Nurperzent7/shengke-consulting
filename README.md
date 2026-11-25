@@ -1,6 +1,6 @@
 # Shengke Consulting Website
 
-Корпоративный сайт **ТОО «Shengke Consulting»** — казахстанский партнёр Shengke Law Firm (升科律师事务所, КНР).
+Корпоративный сайт **ТОО «Shengke Consulting»** — самостоятельная казахстанская компания (юридическое и бухгалтерско-налоговое сопровождение). Сотрудничество с китайской фирмой Shengke Law Firm упоминается только в блоках «О компании», «Партнёрская сеть в Китае» и в карточке Ло Чанци.
 
 ## Живые адреса
 
@@ -23,8 +23,9 @@
 - Next.js (App Router) + TypeScript
 - Tailwind CSS
 - 4 языка: `kk` / `ru` / `en` / `zh`
-- Формы заявок и записи на консультацию (`/api/contact`, `/api/consultation`)
-- WhatsApp / WeChat CTA
+- Запись на консультацию (`/api/consultation`) с согласием на ПДн
+- WhatsApp / WeChat (ID `lawyer-alikhan` + QR)
+- Политика конфиденциальности `/privacy`
 
 ## Запуск локально
 
@@ -47,8 +48,9 @@ npm start
 - `/[locale]/services` и `/[locale]/services/[slug]` — услуги
 - `/[locale]/cases` — кейсы
 - `/[locale]/team` — команда
-- `/[locale]/contact` — контакты и заявка
+- `/[locale]/contact` — контакты и реквизиты (без формы заявки)
 - `/[locale]/consultation` — запись на консультацию
+- `/[locale]/privacy` — политика конфиденциальности
 
 ## Дизайн (бренд)
 
@@ -92,19 +94,21 @@ Favicon: синий квадрат с буквой **S** и золотой по�
 
 Кабинет DNS: https://hoster.kz/cabinet/domain/shengkeconsulting.kz/records/
 
-## Контакты компании (с брифа)
+## Контакты компании
 
-- Адрес: г. Астана, район Есиль, ул. Сарайшык, д. 9, ВП-15
+- Адрес: Республика Казахстан, 010000, г. Астана, район Есиль, ул. Сарайшық, д. 9, н.п. 15
+- БИН: 260540027212
 - Алихан Сеитов: +7 778 308 5560 (WhatsApp)
-- Налоги / бухгалтерия: +7 747 212 6280 (WeChat)
+- Налоги / бухгалтерия: +7 747 212 6280
 - Ло Чанци: +86 180 8083 8700 / +7 707 202 4876
-- Email (сайт): info@shengke.kz
+- Email (сайт и заявки): theseitov@outlook.com
+- WeChat ID: lawyer-alikhan
 - 2ГИС: https://2gis.kz/astana/geo/70000001119344388
 
 ## Формы
 
-`/api/contact` и `/api/consultation` принимают заявки и пишут их в runtime-лог / память процесса.  
-Для продакшена рекомендуется подключить почту или CRM.
+Заявки принимаются только через `/consultation` → `/api/consultation`.  
+Письма уходят на `theseitov@outlook.com` при наличии `RESEND_API_KEY` (и опционально `RESEND_FROM`, `LEADS_TO_EMAIL`). Без ключа заявка сохраняется в runtime-логе.
 
 ## Полезные команды
 

@@ -1,13 +1,15 @@
-export const locales = ["ru", "en", "zh", "kk"] as const;
+export const locales = ["kk", "ru", "en", "zh"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "kk";
 
 export const localeLabels: Record<Locale, string> = {
+  kk: "KZ",
   ru: "RU",
   en: "EN",
   zh: "中文",
-  kk: "KZ",
 };
+
+export const siteUrl = "https://shengkeconsulting.kz";
 
 export const contacts = {
   alikhan: "+7 778 308 5560",
@@ -20,14 +22,23 @@ export const contacts = {
   luoKzTel: "+77072024876",
   whatsapp: "77783085560",
   whatsappUrl: "https://wa.me/77783085560",
-  email: "info@shengke.kz",
-  address: {
-    ru: "г. Астана, район Есиль, ул. Сарайшык, д. 9, ВП-15",
-    en: "9 Saraishyk Street, premises 15, Yesil District, Astana, Kazakhstan",
-    zh: "哈萨克斯坦阿斯塔纳市叶西尔区萨赖希克街 9 号，VP-15",
-    kk: "Астана қ., Есіл ауданы, Сарайшық к-сі, 9 үй, 15 тұрғын емес үй-жай",
-  },
+  email: "theseitov@outlook.com",
+  wechatId: "lawyer-alikhan",
+  wechatQr: "/images/wechat_qr.png",
   map2gis: "https://2gis.kz/astana/geo/70000001119344388",
+  bin: "260540027212",
+  address: {
+    ru: "Республика Казахстан, 010000, г. Астана, район Есиль, ул. Сарайшық, д. 9, н.п. 15",
+    en: "9 Saraishyk Street, premises 15, Yesil District, Astana 010000, Republic of Kazakhstan",
+    zh: "哈萨克斯坦共和国阿斯塔纳市叶西尔区萨赖什克街9号15室，邮编010000",
+    kk: "Қазақстан Республикасы, 010000, Астана қаласы, Есіл ауданы, Сарайшық көшесі, 9 үй, т.е.б. 15",
+  },
+  legalName: {
+    ru: "ТОО «Shengke Consulting»",
+    en: "Shengke Consulting LLP",
+    zh: "Shengke Consulting 有限责任合伙公司",
+    kk: "«Shengke Consulting» ЖШС",
+  },
 };
 
 export const brand = {

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { MessageCircle, X } from "lucide-react";
 import { contacts } from "@/lib/constants";
 import type { Messages } from "@/messages/types";
+import { WeChatPanel } from "@/components/WeChatPanel";
 
 export function FloatingActions({ dict }: { dict: Messages }) {
   const [wechatOpen, setWechatOpen] = useState(false);
@@ -40,20 +41,8 @@ export function FloatingActions({ dict }: { dict: Messages }) {
             >
               <X size={18} />
             </button>
-            <h3 className="text-lg font-semibold text-navy">{dict.common.wechat}</h3>
-            <p className="mt-2 text-sm text-muted">
-              {contacts.tax} / {contacts.luoChina}
-            </p>
-            <div className="mt-5 flex flex-col items-center gap-3 rounded-xl border border-dashed border-line bg-soft p-6">
-              <div className="grid h-40 w-40 place-items-center rounded-lg bg-white text-center text-xs text-muted shadow-sm">
-                WeChat QR
-                <br />
-                {contacts.tax}
-              </div>
-              <p className="text-center text-xs text-muted">
-                Scan WeChat QR or add by phone number
-              </p>
-            </div>
+            <h3 className="mb-4 text-lg font-semibold text-navy">{dict.common.wechat}</h3>
+            <WeChatPanel dict={dict} />
           </div>
         </div>
       )}

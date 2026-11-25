@@ -5,7 +5,6 @@ import { localizedPath } from "@/lib/i18n";
 import type { Messages } from "@/messages/types";
 
 export function Footer({ locale, dict }: { locale: Locale; dict: Messages }) {
-  const year = new Date().getFullYear();
   const links = [
     { href: localizedPath(locale, "/about"), label: dict.nav.about },
     { href: localizedPath(locale, "/services"), label: dict.nav.services },
@@ -13,6 +12,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Messages }) {
     { href: localizedPath(locale, "/team"), label: dict.nav.team },
     { href: localizedPath(locale, "/contact"), label: dict.nav.contact },
     { href: localizedPath(locale, "/consultation"), label: dict.nav.consultation },
+    { href: localizedPath(locale, "/privacy"), label: dict.nav.privacy },
   ];
 
   return (
@@ -22,6 +22,13 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Messages }) {
           <Image src="/logo-white.svg" alt="Shengke Consulting" width={190} height={44} />
           <p className="mt-4 max-w-sm text-sm text-white/75">{dict.footer.tagline}</p>
           <div className="gold-line mt-5" />
+          <ul className="mt-5 space-y-1 text-sm text-white/70">
+            <li className="font-medium text-white/90">{dict.legalEntity.name}</li>
+            <li>
+              {dict.legalEntity.binLabel}: {dict.legalEntity.bin}
+            </li>
+            <li>{dict.legalEntity.address}</li>
+          </ul>
         </div>
 
         <div>
@@ -44,7 +51,11 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Messages }) {
             {dict.footer.contacts}
           </h3>
           <ul className="mt-4 space-y-2 text-sm text-white/80">
-            <li>{contacts.address[locale]}</li>
+            <li>
+              <a href={contacts.map2gis} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                {contacts.address[locale]}
+              </a>
+            </li>
             <li>
               <a href={`tel:${contacts.alikhanTel}`} className="hover:text-white">
                 {contacts.alikhan}
@@ -60,11 +71,14 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Messages }) {
                 {contacts.email}
               </a>
             </li>
+            <li>
+              WeChat: {contacts.wechatId}
+            </li>
           </ul>
         </div>
       </div>
       <div className="border-t border-white/10 py-4 text-center text-xs text-white/55">
-        © {year} Shengke Consulting. {dict.footer.rights}
+        {dict.footer.year}. {dict.footer.rights}
       </div>
     </footer>
   );

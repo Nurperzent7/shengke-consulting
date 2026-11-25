@@ -106,3 +106,14 @@ curl -sI https://www.shengkeconsulting.kz  # ожидается редирект
 ## 8. Контакты для форм / CTA
 
 См. `src/lib/constants.ts` → объект `contacts`.
+
+- Email заявок: `theseitov@outlook.com`
+- WeChat ID: `lawyer-alikhan`, QR: `public/images/wechat_qr.png`
+- Для отправки писем с Vercel задайте `RESEND_API_KEY` (и при необходимости `RESEND_FROM`, `LEADS_TO_EMAIL`)
+
+## 9. SEO после правок ТЗ
+
+- `robots.txt` → `Sitemap: https://shengkeconsulting.kz/sitemap.xml`
+- `sitemap.xml` строится из `siteUrl = https://shengkeconsulting.kz`
+- www → apex 301 в `next.config.ts`
+- hreflang / Open Graph: `src/lib/seo.ts`

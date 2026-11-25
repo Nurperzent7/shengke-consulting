@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import { getLocale, t } from "@/lib/i18n";
 import { ConsultationForm } from "@/components/ConsultationForm";
+import { pageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale: raw } = await params;
+  const locale = getLocale(raw);
+  const dict = t(locale);
+  return pageMetadata(locale, "/consultation", dict.pageMeta.consultation);
+}
 
 export default async function ConsultationPage({
   params,
@@ -23,7 +36,7 @@ export default async function ConsultationPage({
       </section>
 
       <section className="section-pad bg-soft">
-        <div className="container-page max-w-3xl">
+        <div className="container-page max-w-5xl">
           <ConsultationForm locale={locale} dict={dict} />
         </div>
       </section>

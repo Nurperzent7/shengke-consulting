@@ -6,12 +6,27 @@ import {
   Handshake,
   ArrowRight,
   CheckCircle2,
+  Users,
+  Zap,
+  UserCheck,
+  Route,
+  BadgeDollarSign,
+  Globe2,
 } from "lucide-react";
 import { serviceSlugs, type Locale } from "@/lib/constants";
 import { getLocale, localizedPath, t } from "@/lib/i18n";
 import { SectionHeading } from "@/components/SectionHeading";
 
-const icons = [Scale, Building2, Languages, Handshake];
+const icons = [
+  Scale,
+  Building2,
+  Zap,
+  UserCheck,
+  Languages,
+  Route,
+  BadgeDollarSign,
+  Globe2,
+];
 
 export default async function HomePage({
   params,
@@ -22,6 +37,12 @@ export default async function HomePage({
   const locale = getLocale(raw);
   const dict = t(locale);
   const previewServices = serviceSlugs.slice(0, 6);
+  const stats = [
+    dict.stats.clients,
+    dict.stats.languages,
+    dict.stats.since,
+    dict.stats.cities,
+  ];
 
   return (
     <>
@@ -57,21 +78,15 @@ export default async function HomePage({
           </div>
 
           <div className="fade-up grid gap-3 rounded-3xl border border-white/15 bg-white/5 p-5 backdrop-blur-sm">
-            {[
-              { value: "50", label: dict.stats.clientsLocal },
-              { value: "100k+", label: dict.stats.clientsPartner },
-              { value: "300k+", label: dict.stats.cases },
-              { value: "¥9B+", label: dict.stats.recovered },
-            ].map((item) => (
+            {stats.map((item) => (
               <div
                 key={item.label}
-                className="flex items-center justify-between rounded-2xl bg-white/5 px-4 py-3"
+                className="flex items-center justify-between gap-4 rounded-2xl bg-white/5 px-4 py-3"
               >
                 <span className="text-sm text-white/70">{item.label}</span>
-                <span className="text-xl font-semibold text-gold">{item.value}</span>
+                <span className="shrink-0 text-xl font-semibold text-gold">{item.value}</span>
               </div>
             ))}
-            <p className="px-1 text-[11px] text-white/45">{dict.common.partnerNote}</p>
           </div>
         </div>
       </section>
@@ -99,9 +114,9 @@ export default async function HomePage({
       <section className="section-pad">
         <div className="container-page">
           <SectionHeading title={dict.advantages.title} subtitle={dict.advantages.subtitle} />
-          <div className="grid gap-5 md:grid-cols-2">
+          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {dict.advantages.items.map((item, idx) => {
-              const Icon = icons[idx] ?? Scale;
+              const Icon = icons[idx] ?? Users;
               return (
                 <article
                   key={item.title}
@@ -175,7 +190,7 @@ export default async function HomePage({
       <section className="section-pad bg-navy text-white">
         <div className="container-page">
           <SectionHeading title={dict.results.title} light />
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2">
             {dict.results.items.map((item) => (
               <div key={item} className="rounded-3xl border border-white/15 bg-white/5 p-5">
                 <CheckCircle2 className="mb-3 text-gold" size={22} />
@@ -187,26 +202,14 @@ export default async function HomePage({
       </section>
 
       <section className="section-pad bg-soft">
-        <div className="container-page grid gap-8 md:grid-cols-[1fr_1fr] md:items-center">
-          <div>
-            <SectionHeading title={dict.partner.title} subtitle={dict.partner.subtitle} />
-            <p className="text-muted">{dict.partner.text}</p>
-            <p className="mt-4 text-sm font-medium text-navy">{dict.partner.cities}</p>
-          </div>
-          <div className="rounded-3xl border border-line bg-white p-8">
-            <div className="grid grid-cols-2 gap-4 text-center">
-              {[
-                ["200+", dict.stats.staff],
-                ["2012", dict.stats.years],
-                ["3,000+", "cases / month"],
-                ["1,500+ m²", "Chengdu HQ"],
-              ].map(([value, label]) => (
-                <div key={String(value)} className="rounded-2xl bg-soft p-4">
-                  <div className="text-2xl font-semibold text-navy">{value}</div>
-                  <div className="mt-1 text-xs text-muted">{label}</div>
-                </div>
-              ))}
+        <div className="container-page">
+          <SectionHeading title={dict.partnerNetwork.title} />
+          <div className="max-w-4xl rounded-3xl border border-line bg-white p-8 shadow-sm">
+            <div className="mb-4 inline-flex rounded-2xl bg-soft p-3 text-blue">
+              <Handshake size={22} />
             </div>
+            <p className="text-muted">{dict.partnerNetwork.text}</p>
+            <p className="mt-4 text-sm font-medium text-navy">{dict.partnerNetwork.cities}</p>
           </div>
         </div>
       </section>

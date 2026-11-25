@@ -1,7 +1,20 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { serviceSlugs } from "@/lib/constants";
 import { getLocale, localizedPath, t } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale: raw } = await params;
+  const locale = getLocale(raw);
+  const dict = t(locale);
+  return pageMetadata(locale, "/services", dict.pageMeta.services);
+}
 
 export default async function ServicesPage({
   params,

@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import { getLocale, t } from "@/lib/i18n";
 import { SectionHeading } from "@/components/SectionHeading";
+import { pageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale: raw } = await params;
+  const locale = getLocale(raw);
+  const dict = t(locale);
+  return pageMetadata(locale, "/cases", dict.pageMeta.cases);
+}
 
 export default async function CasesPage({
   params,
@@ -27,9 +40,13 @@ export default async function CasesPage({
           {dict.cases.items.map((item) => (
             <article key={item.title} className="rounded-3xl border border-line bg-white p-6 shadow-sm">
               <div className="mb-3 flex flex-wrap gap-2 text-xs font-semibold">
-                <span className="rounded-full bg-soft px-3 py-1 text-navy">{item.year}</span>
+                <span className="rounded-full bg-soft px-3 py-1 text-navy">
+                  {dict.cases.year}: {item.year}
+                </span>
                 {item.amount && (
-                  <span className="rounded-full bg-navy/5 px-3 py-1 text-blue">{item.amount}</span>
+                  <span className="rounded-full bg-navy/5 px-3 py-1 text-blue">
+                    {dict.cases.amount}: {item.amount}
+                  </span>
                 )}
               </div>
               <h2 className="text-lg font-semibold text-navy">{item.title}</h2>
@@ -41,7 +58,7 @@ export default async function CasesPage({
       <section className="section-pad bg-soft">
         <div className="container-page">
           <SectionHeading title={dict.results.title} />
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2">
             {dict.results.items.map((item) => (
               <div key={item} className="rounded-3xl border border-line bg-white p-5 text-sm text-muted">
                 {item}

@@ -1,7 +1,21 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { contacts } from "@/lib/constants";
-import { getLocale, t } from "@/lib/i18n";
-import { ContactForm } from "@/components/ContactForm";
+import { getLocale, localizedPath, t } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/seo";
+import { WeChatPanel } from "@/components/WeChatPanel";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale: raw } = await params;
+  const locale = getLocale(raw);
+  const dict = t(locale);
+  return pageMetadata(locale, "/contact", dict.pageMeta.contact);
+}
 
 export default async function ContactPage({
   params,
@@ -93,9 +107,55 @@ export default async function ContactPage({
                 </a>
               </div>
             </div>
+
+            <div className="rounded-3xl border border-line bg-white p-6">
+              <h2 className="mb-3 text-lg font-semibold text-navy">{dict.contact.requisites}</h2>
+              <ul className="space-y-2 text-sm text-muted">
+                <li className="font-medium text-navy">{dict.legalEntity.name}</li>
+                <li>
+                  {dict.legalEntity.binLabel}: {dict.legalEntity.bin}
+                </li>
+                <li>{dict.legalEntity.address}</li>
+              </ul>
+            </div>
           </div>
 
-          <ContactForm locale={locale} dict={dict} />
+          <div className="space-y-4">
+            <div className="rounded-3xl border border-line bg-white p-6 shadow-sm">
+              <h2 className="text-xl font-semibold text-navy">{dict.common.bookConsultation}</h2>
+              <p className="mt-2 text-sm text-muted">{dict.contact.goConsultation}</p>
+              <Link
+                href={localizedPath(locale, "/consultation")}
+                className="mt-5 inline-flex rounded-full bg-navy px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue"
+              >
+                {dict.nav.consultation}
+              </Link>
+            </div>
+
+            <div className="rounded-3xl border border-line bg-white p-6 shadow-sm">
+              <h2 className="mb-4 text-lg font-semibold text-navy">{dict.common.wechat}</h2>
+              <WeChatPanel dict={dict} embedded />
+            </div>
+
+            <div className="overflow-hidden rounded-3xl border border-line bg-white shadow-sm">
+              <iframe
+                title={dict.contact.map}
+                src="https://widgets.2gis.com/widget?type=firmsonmap&options=%7B%22firmId%22%3A%2270000001119344388%22%7D"
+                className="h-72 w-full border-0"
+                loading="lazy"
+              />
+              <div className="border-t border-line px-4 py-3 text-center">
+                <a
+                  href={contacts.map2gis}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-semibold text-blue"
+                >
+                  {dict.contact.map}
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

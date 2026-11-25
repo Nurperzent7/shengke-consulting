@@ -1,9 +1,17 @@
 import type { ServiceSlug } from "@/lib/constants";
 
+export type PageMeta = { title: string; description: string };
+
 export type Messages = {
-  meta: {
-    title: string;
-    description: string;
+  meta: PageMeta;
+  pageMeta: {
+    about: PageMeta;
+    services: PageMeta;
+    cases: PageMeta;
+    team: PageMeta;
+    contact: PageMeta;
+    consultation: PageMeta;
+    privacy: PageMeta;
   };
   nav: {
     home: string;
@@ -13,7 +21,7 @@ export type Messages = {
     team: string;
     contact: string;
     consultation: string;
-    request: string;
+    privacy: string;
   };
   common: {
     learnMore: string;
@@ -23,15 +31,16 @@ export type Messages = {
     send: string;
     sending: string;
     success: string;
+    consultationSuccess: string;
     error: string;
     required: string;
     openWhatsApp: string;
     wechat: string;
+    wechatScan: string;
+    wechatCopy: string;
+    wechatCopied: string;
     close: string;
-    readMore: string;
     backToServices: string;
-    partnerNote: string;
-    from: string;
   };
   hero: {
     badge: string;
@@ -41,12 +50,10 @@ export type Messages = {
     ctaSecondary: string;
   };
   stats: {
-    clientsLocal: string;
-    clientsPartner: string;
-    cases: string;
-    recovered: string;
-    staff: string;
-    years: string;
+    clients: { value: string; label: string };
+    languages: { value: string; label: string };
+    since: { value: string; label: string };
+    cities: { value: string; label: string };
   };
   aboutPreview: {
     title: string;
@@ -89,36 +96,32 @@ export type Messages = {
   team: {
     title: string;
     subtitle: string;
+    partnerBadge: string;
     members: {
       name: string;
       role: string;
       bio: string;
       tags: string[];
+      isPartner?: boolean;
+      photoAlt: string;
     }[];
   };
-  partner: {
+  partnerNetwork: {
     title: string;
-    subtitle: string;
     text: string;
     cities: string;
   };
   contact: {
     title: string;
     subtitle: string;
-    formTitle: string;
-    name: string;
-    company: string;
-    phone: string;
-    email: string;
-    message: string;
-    service: string;
-    servicePlaceholder: string;
     office: string;
     phones: string;
     map: string;
     legal: string;
     tax: string;
     china: string;
+    requisites: string;
+    goConsultation: string;
   };
   consultation: {
     title: string;
@@ -126,24 +129,37 @@ export type Messages = {
     date: string;
     time: string;
     topic: string;
+    topicPlaceholder: string;
+    other: string;
     format: string;
     online: string;
     offline: string;
-    success: string;
+    name: string;
+    company: string;
+    phone: string;
+    email: string;
+    consent: string;
+  };
+  privacy: {
+    title: string;
+    updated: string;
+    body: string[];
   };
   footer: {
     rights: string;
     tagline: string;
     quickLinks: string;
     contacts: string;
+    year: string;
   };
   aboutPage: {
     title: string;
     intro: string;
-    founded: string;
-    geography: string;
-    advantage: string;
-    certificatesTitle: string;
-    certificates: string[];
+  };
+  legalEntity: {
+    name: string;
+    binLabel: string;
+    bin: string;
+    address: string;
   };
 };
