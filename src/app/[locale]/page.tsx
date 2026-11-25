@@ -87,7 +87,7 @@ export default async function HomePage({
                   {stats.map((item, idx) => (
                     <div
                       key={item.label}
-                      className="flex flex-col gap-2 rounded-2xl border border-white/10 bg-[#0D2448] px-3.5 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-5 sm:py-4"
+                      className="flex flex-col gap-2 rounded-2xl border border-white/10 bg-[#0D2448] px-3.5 py-3.5 sm:px-5 sm:py-4"
                     >
                       <div className="min-w-0">
                         <div className="text-[10px] font-semibold tracking-[0.14em] text-white/45 uppercase">
@@ -97,7 +97,7 @@ export default async function HomePage({
                           {item.label}
                         </div>
                       </div>
-                      <div className="stat-value relative z-10 shrink-0">{item.value}</div>
+                      <div className="stat-value relative z-10 mt-auto break-words">{item.value}</div>
                     </div>
                   ))}
                 </div>
