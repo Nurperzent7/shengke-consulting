@@ -67,8 +67,13 @@ body {
 }
 
 img,
-svg,
 video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Do not force height:auto on all SVGs — logo marks use fixed box sizes */
+svg:not([width]) {
   max-width: 100%;
   height: auto;
 }
@@ -86,10 +91,12 @@ video {
 
 .display {
   font-family: var(--font-display), "Noto Serif", Georgia, serif;
-  letter-spacing: -0.025em;
-  line-height: 1.18;
+  letter-spacing: -0.02em;
+  line-height: 1.22;
   font-weight: 600;
-  text-wrap: balance;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: manual;
 }
 
 .eyebrow {

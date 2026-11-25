@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { contacts, type Locale } from "@/lib/constants";
 import { localizedPath } from "@/lib/i18n";
 import type { Messages } from "@/messages/types";
+import { BrandLogo } from "@/components/BrandLogo";
 
 export function Footer({ locale, dict }: { locale: Locale; dict: Messages }) {
   const links = [
@@ -20,14 +20,10 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Messages }) {
       <div className="absolute inset-0 hero-grid opacity-30" />
       <div className="container-page relative section-pad grid gap-10 sm:gap-12 lg:grid-cols-[1.2fr_0.8fr_0.9fr]">
         <div>
-          <Image
-            src="/logo-white.svg"
-            alt="Shengke Consulting"
-            width={210}
-            height={42}
-            className="h-9 w-auto sm:h-10"
-          />
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/70 sm:mt-5">{dict.footer.tagline}</p>
+          <BrandLogo href={localizedPath(locale, "/")} variant="white" />
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/70 sm:mt-5">
+            {dict.footer.tagline}
+          </p>
           <div className="mt-6 h-px w-20 bg-gradient-to-r from-gold to-transparent" />
           <ul className="mt-6 space-y-1.5 text-sm text-white/65">
             <li className="font-medium text-white/90">{dict.legalEntity.name}</li>

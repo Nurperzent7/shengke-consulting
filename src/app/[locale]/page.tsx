@@ -46,51 +46,60 @@ export default async function HomePage({
 
   return (
     <>
-      <section className="surface-dark noise relative overflow-hidden text-white">
+      <section className="surface-dark noise relative overflow-x-clip pb-4 text-white sm:pb-0">
         <div className="absolute inset-0 hero-grid opacity-45" />
-        <div className="absolute -top-28 -right-20 h-[28rem] w-[28rem] rounded-full bg-gold/15 blur-3xl" />
-        <div className="absolute bottom-0 left-0 h-48 w-full bg-gradient-to-t from-navy-deep to-transparent" />
-        <div className="container-page relative grid items-center gap-8 py-14 sm:gap-10 sm:py-20 md:grid-cols-[1.15fr_0.85fr] md:gap-12 md:py-28 lg:py-32">
-          <div className="fade-up">
-            <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[10px] tracking-[0.12em] text-champagne uppercase sm:px-3.5 sm:text-[11px] sm:tracking-[0.16em]">
+        <div className="absolute -top-20 -right-16 h-64 w-64 rounded-full bg-gold/15 blur-3xl md:h-80 md:w-80" />
+        <div className="absolute bottom-0 left-0 h-32 w-full bg-gradient-to-t from-navy-deep/80 to-transparent" />
+        <div className="container-page relative grid items-start gap-8 py-12 sm:gap-10 sm:py-16 md:grid-cols-[1.15fr_0.85fr] md:items-center md:gap-10 md:py-20 lg:gap-12 lg:py-24">
+          <div className="fade-up relative z-10 min-w-0">
+            <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[10px] tracking-[0.1em] text-champagne uppercase sm:px-3.5 sm:text-[11px] sm:tracking-[0.14em]">
               <span className="ornament !h-2 !w-2 border-champagne" />
               <span className="truncate">{dict.hero.badge}</span>
             </div>
-            <h1 className="display mt-5 max-w-3xl text-[1.85rem] font-semibold sm:mt-7 sm:text-4xl md:text-5xl lg:text-[3.45rem]">
+            <h1 className="display mt-5 max-w-3xl text-[1.75rem] leading-[1.22] font-semibold sm:mt-6 sm:text-4xl md:text-[2.55rem] lg:text-[3.15rem]">
               {dict.hero.title}
             </h1>
-            <p className="mt-4 max-w-2xl text-[0.95rem] leading-relaxed text-white/72 sm:mt-6 sm:text-base md:text-lg">
+            <p className="mt-4 max-w-2xl text-[0.95rem] leading-relaxed text-white/72 sm:mt-5 sm:text-base md:text-lg">
               {dict.hero.subtitle}
             </p>
-            <div className="btn-row mt-7 sm:mt-9 sm:flex sm:flex-wrap sm:[&>.btn-primary]:w-auto sm:[&>.btn-ghost]:w-auto">
-              <Link href={localizedPath(locale, "/consultation")} className="btn-primary">
+            <div className="relative z-20 mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap">
+              <Link
+                href={localizedPath(locale, "/consultation")}
+                className="btn-primary w-full justify-center sm:w-auto"
+              >
                 {dict.hero.ctaPrimary}
                 <ArrowRight size={16} />
               </Link>
-              <Link href={localizedPath(locale, "/services")} className="btn-ghost">
+              <Link
+                href={localizedPath(locale, "/services")}
+                className="btn-ghost w-full justify-center sm:w-auto"
+              >
                 {dict.hero.ctaSecondary}
               </Link>
             </div>
           </div>
 
-          <div className="fade-up-delay relative">
-            <div className="absolute -inset-2 rounded-[1.5rem] border border-gold/20 sm:-inset-3 sm:rounded-[2rem]" />
-            <div className="relative overflow-hidden rounded-[1.25rem] border border-white/10 bg-white/[0.04] p-2.5 shadow-[0_30px_80px_rgba(0,0,0,0.25)] backdrop-blur-md sm:rounded-[1.6rem] sm:p-3">
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-1 sm:gap-2.5">
-                {stats.map((item, idx) => (
-                  <div
-                    key={item.label}
-                    className="group flex flex-col gap-2 rounded-2xl border border-white/5 bg-white/[0.03] px-3.5 py-3.5 transition hover:border-gold/30 hover:bg-white/[0.06] sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-5 sm:py-4"
-                  >
-                    <div className="min-w-0">
-                      <div className="text-[10px] font-semibold tracking-[0.14em] text-white/40 uppercase">
-                        0{idx + 1}
+          <div className="fade-up-delay relative z-10 min-w-0">
+            <div className="rounded-[1.25rem] border border-gold/25 p-1.5 sm:rounded-[1.6rem] sm:p-2">
+              <div className="rounded-[1.1rem] border border-white/10 bg-white/[0.05] p-2.5 backdrop-blur-md sm:rounded-[1.35rem] sm:p-3">
+                <div className="grid grid-cols-2 gap-2 md:grid-cols-1 md:gap-2.5">
+                  {stats.map((item, idx) => (
+                    <div
+                      key={item.label}
+                      className="flex flex-col gap-2 rounded-2xl border border-white/5 bg-white/[0.03] px-3.5 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-5 sm:py-4"
+                    >
+                      <div className="min-w-0">
+                        <div className="text-[10px] font-semibold tracking-[0.14em] text-white/40 uppercase">
+                          0{idx + 1}
+                        </div>
+                        <div className="mt-1 text-[12px] leading-snug text-white/70 sm:text-sm">
+                          {item.label}
+                        </div>
                       </div>
-                      <div className="mt-1 text-[12px] leading-snug text-white/70 sm:text-sm">{item.label}</div>
+                      <div className="stat-value shrink-0">{item.value}</div>
                     </div>
-                    <div className="stat-value">{item.value}</div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
