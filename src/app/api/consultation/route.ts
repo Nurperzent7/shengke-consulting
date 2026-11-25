@@ -34,8 +34,8 @@ export async function POST(request: Request) {
 
     try {
       await sendLeadEmail(payload);
-    } catch (err) {
-      console.error("[consultation-email]", err);
+    } catch {
+      console.error("[consultation-email]", { status: "failed" });
       // Lead is stored even if email provider is unavailable.
     }
 

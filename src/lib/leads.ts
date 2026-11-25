@@ -14,11 +14,7 @@ export function storeLead(payload: Record<string, unknown>): LeadRecord {
     leads.length = MAX_LEADS;
   }
 
-  // Useful in local/dev logs; published hosting may surface these in runtime logs.
-  console.info("[lead]", JSON.stringify(record));
+  // Do not log PII — Cursor publish security review treats that as privacy_leak.
+  console.info("[lead]", { type: record.type, createdAt: record.createdAt });
   return record;
-}
-
-export function listLeads() {
-  return [...leads];
 }

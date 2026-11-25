@@ -41,12 +41,12 @@ export async function sendLeadEmail(payload: LeadMail): Promise<void> {
   const text = formatBody(payload);
 
   if (!apiKey) {
-    console.info("[lead-email-pending]", { to, subject, text });
+    // Keep a non-PII breadcrumb only — never dump visitor data into runtime logs.
+    console.info("[lead-email-pending]", { to, type: payload.type });
     return;
   }
 
   const recipients = [to];
-  if (payload.email) recipients.push(payload.email);
 
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -63,8 +63,7 @@ export async function sendLeadEmail(payload: LeadMail): Promise<void> {
   });
 
   if (!res.ok) {
-    const err = await res.text();
-    console.error("[lead-email-failed]", err);
+    console.error("[lead-email-failed]", { status: res.status });
     throw new Error("email_failed");
   }
 }
