@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getLocale, t } from "@/lib/i18n";
+import { PageHero } from "@/components/PageHero";
 import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
@@ -24,23 +25,17 @@ export default async function PrivacyPage({
 
   return (
     <div>
-      <section className="bg-navy py-16 text-white">
-        <div className="container-page">
-          <div className="gold-line mb-4" />
-          <h1 className="font-[family-name:var(--font-display)] text-4xl font-semibold md:text-5xl">
-            {dict.privacy.title}
-          </h1>
-          <p className="mt-4 text-sm text-white/65">{dict.privacy.updated}</p>
-        </div>
-      </section>
+      <PageHero title={dict.privacy.title} subtitle={dict.privacy.updated} eyebrow="Legal" />
 
       <section className="section-pad">
-        <div className="container-page max-w-3xl space-y-5">
-          {dict.privacy.body.map((paragraph) => (
-            <p key={paragraph} className="text-base leading-relaxed text-muted">
-              {paragraph}
-            </p>
-          ))}
+        <div className="container-page max-w-3xl">
+          <div className="surface-card space-y-5 rounded-[1.75rem] p-8 md:p-10">
+            {dict.privacy.body.map((paragraph) => (
+              <p key={paragraph} className="text-base leading-relaxed text-muted">
+                {paragraph}
+              </p>
+            ))}
+          </div>
         </div>
       </section>
     </div>

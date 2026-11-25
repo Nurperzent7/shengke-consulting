@@ -2,22 +2,32 @@ export function SectionHeading({
   title,
   subtitle,
   light = false,
+  eyebrow,
+  align = "left",
 }: {
   title: string;
   subtitle?: string;
   light?: boolean;
+  eyebrow?: string;
+  align?: "left" | "center";
 }) {
   return (
-    <div className="mb-10 max-w-3xl">
-      <div className="gold-line mb-4" />
-      <h2 className={`text-3xl font-semibold tracking-tight md:text-4xl ${light ? "text-white" : "text-navy"}`}>
+    <div className={`mb-10 max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}>
+      {eyebrow ? (
+        <div className={`eyebrow mb-4 ${light ? "text-champagne" : ""} ${align === "center" ? "justify-center before:hidden" : ""}`}>
+          {eyebrow}
+        </div>
+      ) : (
+        <div className={`gold-line mb-4 ${align === "center" ? "mx-auto" : ""}`} />
+      )}
+      <h2 className={`display text-3xl font-semibold md:text-4xl lg:text-[2.65rem] ${light ? "text-white" : "text-navy"}`}>
         {title}
       </h2>
-      {subtitle && (
-        <p className={`mt-3 text-base md:text-lg ${light ? "text-white/75" : "text-muted"}`}>
+      {subtitle ? (
+        <p className={`mt-4 text-base leading-relaxed md:text-lg ${light ? "text-white/70" : "text-muted"}`}>
           {subtitle}
         </p>
-      )}
+      ) : null}
     </div>
   );
 }

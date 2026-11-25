@@ -4,6 +4,7 @@ import { MapPin, Phone, Mail } from "lucide-react";
 import { contacts } from "@/lib/constants";
 import { getLocale, localizedPath, t } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
+import { PageHero } from "@/components/PageHero";
 import { WeChatPanel } from "@/components/WeChatPanel";
 
 export async function generateMetadata({
@@ -28,55 +29,53 @@ export default async function ContactPage({
 
   return (
     <div>
-      <section className="bg-navy py-16 text-white">
-        <div className="container-page">
-          <div className="gold-line mb-4" />
-          <h1 className="font-[family-name:var(--font-display)] text-4xl font-semibold md:text-5xl">
-            {dict.contact.title}
-          </h1>
-          <p className="mt-4 max-w-3xl text-white/75">{dict.contact.subtitle}</p>
-        </div>
-      </section>
+      <PageHero title={dict.contact.title} subtitle={dict.contact.subtitle} eyebrow="Contacts" />
 
       <section className="section-pad">
-        <div className="container-page grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="container-page grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="space-y-4">
-            <div className="rounded-3xl border border-line bg-white p-6">
+            <div className="surface-card rounded-[1.5rem] p-6 md:p-7">
               <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-navy">
-                <MapPin size={18} className="text-blue" />
+                <MapPin size={18} className="text-gold-deep" />
                 {dict.contact.office}
               </h2>
-              <p className="text-sm text-muted">{contacts.address[locale]}</p>
+              <p className="text-sm leading-relaxed text-muted">{contacts.address[locale]}</p>
               <a
                 href={contacts.map2gis}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-block text-sm font-semibold text-blue"
+                className="mt-4 inline-block text-sm font-semibold text-navy transition hover:text-blue"
               >
                 {dict.contact.map}
               </a>
             </div>
 
-            <div className="rounded-3xl border border-line bg-white p-6">
+            <div className="surface-card rounded-[1.5rem] p-6 md:p-7">
               <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-navy">
-                <Phone size={18} className="text-blue" />
+                <Phone size={18} className="text-gold-deep" />
                 {dict.contact.phones}
               </h2>
               <ul className="space-y-3 text-sm text-muted">
                 <li>
-                  <span className="block text-xs text-navy/60">{dict.contact.legal}</span>
+                  <span className="block text-[11px] tracking-[0.12em] text-navy/50 uppercase">
+                    {dict.contact.legal}
+                  </span>
                   <a href={`tel:${contacts.alikhanTel}`} className="font-medium text-navy">
                     {contacts.alikhan}
                   </a>
                 </li>
                 <li>
-                  <span className="block text-xs text-navy/60">{dict.contact.tax}</span>
+                  <span className="block text-[11px] tracking-[0.12em] text-navy/50 uppercase">
+                    {dict.contact.tax}
+                  </span>
                   <a href={`tel:${contacts.taxTel}`} className="font-medium text-navy">
                     {contacts.tax}
                   </a>
                 </li>
                 <li>
-                  <span className="block text-xs text-navy/60">{dict.contact.china}</span>
+                  <span className="block text-[11px] tracking-[0.12em] text-navy/50 uppercase">
+                    {dict.contact.china}
+                  </span>
                   <a href={`tel:${contacts.luoChinaTel}`} className="font-medium text-navy">
                     {contacts.luoChina}
                   </a>
@@ -88,27 +87,27 @@ export default async function ContactPage({
               </ul>
             </div>
 
-            <div className="rounded-3xl border border-line bg-white p-6">
+            <div className="surface-card rounded-[1.5rem] p-6 md:p-7">
               <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold text-navy">
-                <Mail size={18} className="text-blue" />
+                <Mail size={18} className="text-gold-deep" />
                 Email
               </h2>
               <a href={`mailto:${contacts.email}`} className="text-sm font-medium text-navy">
                 {contacts.email}
               </a>
-              <div className="mt-5 flex flex-wrap gap-3">
+              <div className="mt-5">
                 <a
                   href={contacts.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-[#25D366] px-4 py-2 text-sm font-semibold text-white"
+                  className="inline-flex rounded-full bg-[#25D366] px-4 py-2 text-sm font-semibold text-white shadow-sm"
                 >
                   {dict.common.openWhatsApp}
                 </a>
               </div>
             </div>
 
-            <div className="rounded-3xl border border-line bg-white p-6">
+            <div className="surface-card rounded-[1.5rem] p-6 md:p-7">
               <h2 className="mb-3 text-lg font-semibold text-navy">{dict.contact.requisites}</h2>
               <ul className="space-y-2 text-sm text-muted">
                 <li className="font-medium text-navy">{dict.legalEntity.name}</li>
@@ -121,23 +120,21 @@ export default async function ContactPage({
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-3xl border border-line bg-white p-6 shadow-sm">
-              <h2 className="text-xl font-semibold text-navy">{dict.common.bookConsultation}</h2>
-              <p className="mt-2 text-sm text-muted">{dict.contact.goConsultation}</p>
-              <Link
-                href={localizedPath(locale, "/consultation")}
-                className="mt-5 inline-flex rounded-full bg-navy px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue"
-              >
+            <div className="relative overflow-hidden rounded-[1.5rem] surface-dark p-7 text-white md:p-8">
+              <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-gold/20 blur-2xl" />
+              <h2 className="display relative text-3xl font-semibold">{dict.common.bookConsultation}</h2>
+              <p className="relative mt-3 text-sm text-white/70">{dict.contact.goConsultation}</p>
+              <Link href={localizedPath(locale, "/consultation")} className="btn-primary relative mt-6">
                 {dict.nav.consultation}
               </Link>
             </div>
 
-            <div className="rounded-3xl border border-line bg-white p-6 shadow-sm">
+            <div className="surface-card rounded-[1.5rem] p-6 md:p-7">
               <h2 className="mb-4 text-lg font-semibold text-navy">{dict.common.wechat}</h2>
               <WeChatPanel dict={dict} embedded />
             </div>
 
-            <div className="overflow-hidden rounded-3xl border border-line bg-white shadow-sm">
+            <div className="overflow-hidden rounded-[1.5rem] surface-card">
               <iframe
                 title={dict.contact.map}
                 src="https://widgets.2gis.com/widget?type=firmsonmap&options=%7B%22firmId%22%3A%2270000001119344388%22%7D"
@@ -149,7 +146,7 @@ export default async function ContactPage({
                   href={contacts.map2gis}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-semibold text-blue"
+                  className="text-sm font-semibold text-navy"
                 >
                   {dict.contact.map}
                 </a>

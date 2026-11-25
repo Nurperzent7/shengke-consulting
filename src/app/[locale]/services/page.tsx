@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { serviceSlugs } from "@/lib/constants";
 import { getLocale, localizedPath, t } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
+import { PageHero } from "@/components/PageHero";
 
 export async function generateMetadata({
   params,
@@ -27,40 +28,41 @@ export default async function ServicesPage({
 
   return (
     <div>
-      <section className="bg-navy py-16 text-white">
-        <div className="container-page">
-          <div className="gold-line mb-4" />
-          <h1 className="font-[family-name:var(--font-display)] text-4xl font-semibold md:text-5xl">
-            {dict.services.title}
-          </h1>
-          <p className="mt-4 max-w-3xl text-white/75">{dict.services.subtitle}</p>
-        </div>
-      </section>
+      <PageHero title={dict.services.title} subtitle={dict.services.subtitle} eyebrow="Services" />
 
       <section className="section-pad">
         <div className="container-page">
-          <div className="mb-8 rounded-3xl border border-gold/40 bg-soft p-6">
-            <h2 className="text-xl font-semibold text-navy">{dict.services.mainService}</h2>
-            <p className="mt-2 text-sm text-muted">{dict.services.audience}</p>
-            <p className="mt-3 text-sm text-muted">{dict.services.pricingNote}</p>
+          <div className="mb-8 overflow-hidden rounded-[1.75rem] border border-gold/25 bg-gradient-to-br from-white via-cream to-champagne/20 p-7 md:p-9">
+            <div className="text-[11px] font-semibold tracking-[0.18em] text-gold-deep uppercase">
+              Core practice
+            </div>
+            <h2 className="display mt-3 text-2xl font-semibold text-navy md:text-3xl">
+              {dict.services.mainService}
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm text-muted md:text-base">{dict.services.audience}</p>
+            <p className="mt-3 max-w-3xl text-sm text-muted">{dict.services.pricingNote}</p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
-            {serviceSlugs.map((slug) => {
+            {serviceSlugs.map((slug, idx) => {
               const item = dict.services.items[slug];
               return (
                 <Link
                   key={slug}
                   href={localizedPath(locale, `/services/${slug}`)}
-                  className="card-lift group rounded-3xl border border-line bg-white p-6"
+                  className="card-lift group rounded-[1.5rem] surface-card p-6 md:p-7"
                 >
-                  <h3 className="text-xl font-semibold text-navy group-hover:text-blue">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted">{item.short}</p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue">
-                    {dict.common.learnMore} <ArrowRight size={14} />
-                  </span>
+                  <div className="mb-4 flex items-center justify-between">
+                    <span className="text-[11px] font-semibold tracking-[0.16em] text-gold">
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
+                    <ArrowRight
+                      size={16}
+                      className="text-muted transition group-hover:translate-x-1 group-hover:text-navy"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold text-navy group-hover:text-blue">{item.title}</h3>
+                  <p className="mt-2.5 text-sm leading-relaxed text-muted">{item.short}</p>
                 </Link>
               );
             })}

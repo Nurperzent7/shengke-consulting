@@ -6,11 +6,13 @@ const display = Cormorant_Garamond({
   variable: "--font-display",
   subsets: ["latin", "cyrillic"],
   weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 const body = Manrope({
   variable: "--font-body",
   subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {

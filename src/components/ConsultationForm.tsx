@@ -53,29 +53,24 @@ export function ConsultationForm({
     }
   }
 
+  const fieldClass =
+    "w-full rounded-xl border border-line bg-cream/70 px-3.5 py-2.5 outline-none transition focus:border-gold/60 focus:bg-white";
+
   return (
     <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-      <form
-        onSubmit={onSubmit}
-        className="space-y-4 rounded-2xl border border-line bg-white p-6 shadow-sm"
-      >
+      <form onSubmit={onSubmit} className="space-y-4 rounded-[1.75rem] surface-card p-6 md:p-8">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Field label={dict.consultation.name} name="name" required />
-          <Field label={dict.consultation.company} name="company" />
-          <Field label={dict.consultation.phone} name="phone" required type="tel" />
-          <Field label={dict.consultation.email} name="email" type="email" />
-          <Field label={dict.consultation.date} name="date" required type="date" />
-          <Field label={dict.consultation.time} name="time" required type="time" />
+          <Field label={dict.consultation.name} name="name" required className={fieldClass} />
+          <Field label={dict.consultation.company} name="company" className={fieldClass} />
+          <Field label={dict.consultation.phone} name="phone" required type="tel" className={fieldClass} />
+          <Field label={dict.consultation.email} name="email" type="email" className={fieldClass} />
+          <Field label={dict.consultation.date} name="date" required type="date" className={fieldClass} />
+          <Field label={dict.consultation.time} name="time" required type="time" className={fieldClass} />
         </div>
 
         <label className="block text-sm">
           <span className="mb-1.5 block font-medium text-ink">{dict.consultation.format}</span>
-          <select
-            name="format"
-            required
-            defaultValue="online"
-            className="w-full rounded-xl border border-line bg-soft/40 px-3 py-2.5 outline-none focus:border-blue"
-          >
+          <select name="format" required defaultValue="online" className={fieldClass}>
             <option value="online">{dict.consultation.online}</option>
             <option value="offline">{dict.consultation.offline}</option>
           </select>
@@ -83,12 +78,7 @@ export function ConsultationForm({
 
         <label className="block text-sm">
           <span className="mb-1.5 block font-medium text-ink">{dict.consultation.topic}</span>
-          <select
-            name="topic"
-            required
-            defaultValue=""
-            className="w-full rounded-xl border border-line bg-soft/40 px-3 py-2.5 outline-none focus:border-blue"
-          >
+          <select name="topic" required defaultValue="" className={fieldClass}>
             <option value="" disabled>
               {dict.consultation.topicPlaceholder}
             </option>
@@ -101,7 +91,7 @@ export function ConsultationForm({
           </select>
         </label>
 
-        <label className="flex items-start gap-3 rounded-xl border border-line bg-soft/40 p-3 text-sm text-muted">
+        <label className="flex items-start gap-3 rounded-xl border border-line bg-soft/50 p-3.5 text-sm text-muted">
           <input
             type="checkbox"
             checked={consent}
@@ -112,7 +102,7 @@ export function ConsultationForm({
             {dict.consultation.consent}{" "}
             <Link
               href={localizedPath(locale, "/privacy")}
-              className="font-semibold text-blue underline-offset-2 hover:underline"
+              className="font-semibold text-navy underline-offset-2 hover:underline"
             >
               {dict.nav.privacy}
             </Link>
@@ -123,7 +113,7 @@ export function ConsultationForm({
         <button
           type="submit"
           disabled={status === "loading" || !consent}
-          className="w-full rounded-full bg-navy px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue disabled:cursor-not-allowed disabled:opacity-60"
+          className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === "loading" ? dict.common.sending : dict.common.bookConsultation}
         </button>
@@ -134,9 +124,12 @@ export function ConsultationForm({
         {status === "error" && <p className="text-sm text-red-600">{dict.common.error}</p>}
       </form>
 
-      <div className="rounded-2xl border border-line bg-white p-6 shadow-sm">
-        <h3 className="mb-4 text-lg font-semibold text-navy">{dict.common.wechat}</h3>
-        <WeChatPanel dict={dict} embedded />
+      <div className="rounded-[1.75rem] surface-card p-6 md:p-8">
+        <div className="eyebrow mb-4">WeChat</div>
+        <h3 className="display text-2xl font-semibold text-navy">{dict.common.wechat}</h3>
+        <div className="mt-5">
+          <WeChatPanel dict={dict} embedded />
+        </div>
       </div>
     </div>
   );
@@ -147,11 +140,13 @@ function Field({
   name,
   required,
   type = "text",
+  className,
 }: {
   label: string;
   name: string;
   required?: boolean;
   type?: string;
+  className: string;
 }) {
   return (
     <label className="block text-sm">
@@ -159,12 +154,7 @@ function Field({
         {label}
         {required ? " *" : ""}
       </span>
-      <input
-        name={name}
-        type={type}
-        required={required}
-        className="w-full rounded-xl border border-line bg-soft/40 px-3 py-2.5 outline-none focus:border-blue"
-      />
+      <input name={name} type={type} required={required} className={className} />
     </label>
   );
 }

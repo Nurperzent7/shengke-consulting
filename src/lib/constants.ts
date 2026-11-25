@@ -42,10 +42,11 @@ export const contacts = {
 };
 
 export const brand = {
-  primary: "#133269",
+  primary: "#0D2244",
   accent: "#2F5BD3",
-  gold: "#C9A227",
-  soft: "#EEF2F9",
+  gold: "#C4A35A",
+  soft: "#F3EFE7",
+  cream: "#FAF7F1",
   white: "#FFFFFF",
 };
 
