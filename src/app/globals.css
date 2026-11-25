@@ -178,12 +178,12 @@ svg:not([width]) {
   justify-content: center;
   gap: 0.5rem;
   border-radius: 999px;
-  background: linear-gradient(135deg, #d8bb74, #b8953a 52%, #8f7130);
-  color: var(--navy-deep);
+  background: linear-gradient(135deg, #e6c97a, #c9a227 48%, #a8841f);
+  color: #061225;
   font-size: 0.875rem;
   font-weight: 700;
   padding: 0.85rem 1.3rem;
-  box-shadow: 0 12px 30px rgba(143, 113, 48, 0.28);
+  box-shadow: 0 12px 30px rgba(168, 132, 31, 0.34);
   transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
 }
 

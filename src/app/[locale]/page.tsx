@@ -46,7 +46,7 @@ export default async function HomePage({
 
   return (
     <>
-      <section className="surface-dark noise relative overflow-x-clip pb-4 text-white sm:pb-0">
+      <section className="surface-dark noise relative overflow-x-clip pb-24 text-white sm:pb-0">
         <div className="absolute inset-0 hero-grid opacity-45" />
         <div className="absolute -top-20 -right-16 h-64 w-64 rounded-full bg-gold/15 blur-3xl md:h-80 md:w-80" />
         <div className="absolute bottom-0 left-0 h-32 w-full bg-gradient-to-t from-navy-deep/80 to-transparent" />
@@ -56,7 +56,7 @@ export default async function HomePage({
               <span className="ornament !h-2 !w-2 border-champagne" />
               <span className="truncate">{dict.hero.badge}</span>
             </div>
-            <h1 className="display mt-5 max-w-3xl text-[1.75rem] leading-[1.22] font-semibold sm:mt-6 sm:text-4xl md:text-[2.55rem] lg:text-[3.15rem]">
+            <h1 className="display mt-5 max-w-3xl text-[1.75rem] leading-[1.22] font-semibold text-white sm:mt-6 sm:text-4xl md:text-[2.55rem] lg:text-[3.15rem]">
               {dict.hero.title}
             </h1>
             <p className="mt-4 max-w-2xl text-[0.95rem] leading-relaxed text-white/72 sm:mt-5 sm:text-base md:text-lg">
